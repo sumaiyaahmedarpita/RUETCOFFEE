@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coffee Ordering Website</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f3e9;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #6f4e37;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 700px;
+      margin: 30px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #6f4e37;
+    }
+
+    select, input[type="checkbox"], button {
+      margin: 10px 0;
+    }
+
+    button {
+      padding: 10px 20px;
+      background: #6f4e37;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #5b3f2d;
+    }
+
+    .dashboard-box {
+      background: #f0e5d8;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    ☕ Coffee Ordering Dashboard
+  </header>
+
+  <div class="container">
+    <h2>Select Your Coffee</h2>
+    <select id="coffee-select">
+      <option value="espresso">Espresso</option>
+      <option value="latte">Latte</option>
+      <option value="cappuccino">Cappuccino</option>
+    </select>
+
+    <h2>Add-ons</h2>
+    <label><input type="checkbox" value="milk"> Extra Milk</label><br>
+    <label><input type="checkbox" value="sugar"> Sugar</label><br>
+    <label><input type="checkbox" value="cream"> Whipped Cream</label><br>
+
+    <button id="order-btn">Place Order</button>
+
+    <div class="dashboard-box">
+      <h3>Order Summary (UI Only)</h3>
+      <p>Your selected coffee and add-ons will appear here.</p>
+    </div>
+  </div>
+
+  <script>
+    // Factory Pattern (Structure Only)
+    class Coffee {
+      constructor() {
+        this.description = "Unknown Coffee";
+      }
+      getDescription() {
+        return this.description;
+      }
+    }
+
+    class Espresso extends Coffee {
+      constructor() {
+        super();
+        this.description = "Espresso";
+      }
+    }
+
+    class Latte extends Coffee {
+      constructor() {
+        super();
+        this.description = "Latte";
+      }
+    }
+
+    class Cappuccino extends Coffee {
+      constructor() {
+        super();
+        this.description = "Cappuccino";
+      }
+    }
+
+    class CoffeeFactory {
+      static createCoffee(type) {
+        switch(type) {
+          case 'espresso': return new Espresso();
+          case 'latte': return new Latte();
+          case 'cappuccino': return new Cappuccino();
+          default: return null;
+        }
+      }
+    }
+
+    // Decorator Pattern (Structure Only)
+    class CoffeeDecorator extends Coffee {
+      constructor(coffee) {
+        super();
+        this.coffee = coffee;
+      }
+      getDescription() {
+        return this.coffee.getDescription();
+      }
+    }
+
+    class MilkDecorator extends CoffeeDecorator {
+      getDescription() {
+        return this.coffee.getDescription() + ", Milk";
+      }
+    }
+
+    class SugarDecorator extends CoffeeDecorator {
+      getDescription() {
+        return this.coffee.getDescription() + ", Sugar";
+      }
+    }
+
+    class CreamDecorator extends CoffeeDecorator {
+      getDescription() {
+        return this.coffee.getDescription() + ", Whipped Cream";
+      }
+    }
+
+    // UI functionality placeholder
+    document.getElementById("order-btn").addEventListener("click", () => {
+      alert("Functionality will be added later. UI built successfully.");
+    });
+
+  </script>
+</body>
+</html>
