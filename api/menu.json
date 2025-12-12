@@ -1,0 +1,40 @@
+{
+  "coffees": [
+    {
+      "id": 1,
+      "type": "espresso",
+      "name": "Espresso",
+      "price": 120
+    },
+    {
+      "id": 2,
+      "type": "latte",
+      "name": "Latte",
+      "price": 180
+    },
+    {
+      "id": 3,
+      "type": "cappuccino",
+      "name": "Cappuccino",
+      "price": 200
+    }
+  ],
+
+  "addons": [
+    {
+      "id": "milk",
+      "name": "Extra Milk",
+      "price": 20
+    },
+    {
+      "id": "sugar",
+      "name": "Sugar",
+      "price": 10
+    },
+    {
+      "id": "cream",
+      "name": "Whipped Cream",
+      "price": 30
+    }
+  ]
+}
